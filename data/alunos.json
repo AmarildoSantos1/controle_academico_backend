@@ -1,0 +1,31 @@
+[
+  {
+    "id": "80887e30-b08b-446d-883a-e9ef31fb77fb",
+    "nome": "Joao Silva",
+    "tipo_id": "MATRICULA",
+    "identificador": "2025A0002",
+    "data_cadastro": "2025-11-12",
+    "ativo": true,
+    "disciplinas": []
+  },
+  {
+    "id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "nome": "Maria Silva",
+    "tipo_id": "MATRICULA",
+    "identificador": "2025A0001",
+    "data_cadastro": "2025-11-11",
+    "ativo": true,
+    "disciplinas": [
+      {
+        "id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+        "nome": "Matemática",
+        "data_cadastro": "2025-11-11",
+        "notas": {
+          "E1": 8.0,
+          "E2": 7.0,
+          "E3": 9.0
+        }
+      }
+    ]
+  }
+]

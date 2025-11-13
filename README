@@ -1,0 +1,260 @@
+# 📘 Sistema de Controle Acadêmico (Backend)
+
+## 📌 Descrição Geral
+
+Este projeto implementa um **Sistema de Controle Acadêmico** para uso por coordenadores, permitindo:
+
+- Cadastro e gerenciamento de alunos  
+- Ativação/inativação de alunos  
+- Cadastro de disciplinas por aluno  
+- Lançamento de notas por estágio (E1, E2, E3)  
+- Cálculo automático da média ponderada (30/30/40)  
+- Definição automática do status (APROVADO, REPROVADO, EM_CURSO)  
+- Geração de relatórios CSV (aluno e turma)  
+- Sistema de autenticação por token  
+- Logs de auditoria de todas as ações  
+
+Todo o sistema roda exclusivamente no **backend**, utilizando arquivos JSON como persistência.
+
+---
+
+# ⚙️ Tecnologias Utilizadas
+
+- **Python 3.10+**
+- **FastAPI**
+- **Uvicorn**
+- **Pydantic**
+- **CORS Middleware**
+- **JSON como banco de dados**
+- **Autenticação Token-based**
+
+---
+
+# 📁 Estrutura do Projeto
+
+backend/
+│── app.py
+│── auth.py
+│── models.py
+│── storage.py
+│── util.py
+│── requirements.txt
+│
+└── data/
+├── admin.json
+├── tokens.json
+├── alunos.json
+└── logs.json
+
+
+---
+
+# 🚀 Instalação e Execução
+
+## 1️⃣ Criar ambiente virtual
+
+### Windows
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+### Linux/Mac
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+## 2️⃣ Instalar dependências
+```bash
+pip install -r requirements.txt
+```
+
+## 3️⃣ Iniciar servidor
+```bash
+uvicorn app:app --reload --port 8000
+```
+## 4️⃣ Acessar documentação interativa
+```bash
+👉 http://127.0.0.1:8000/docs
+```
+
+## 🔐 Autenticação
+
+Todas as rotas (exceto login) exigem o header:
+
+```bash 
+Authorization: Bearer SEU_TOKEN_AQUI
+```
+### No postman - Login (obter token)
+```bash
+POST /auth/login
+
+Body:
+{
+  "username": "admin",
+  "password": "1234"
+}
+
+Retorno:
+{
+  "token": "abcd1234..."
+}
+```
+### 🧪 Roteiro Completo de Testes (Postman / Swagger)
+### ✔️ 1. Login
+
+POST /auth/login
+
+Copia o token → usar nas próximas requisições.
+
+### ✔️ 2. Criar aluno
+```bash
+POST /students
+
+{
+  "nome": "Maria Silva",
+  "tipo_id": "MATRICULA",
+  "identificador": "2025A0001",
+  "data_cadastro": "2025-11-11",
+  "ativo": true
+}
+
+
+O retorno fornecerá:
+
+"id": "ALUNO_ID"
+```
+
+### ✔️ 3. Listar alunos
+
+GET /students
+
+### ✔️ 4. Ativar ou desativar aluno
+```bash
+PATCH /students/{ALUNO_ID}/status
+
+Desativar:
+{
+  "ativo": false
+}
+
+Ativar:
+{
+  "ativo": true
+}
+```
+### ✔️ 5. Adicionar disciplina ao aluno
+```bash
+POST /students/{ALUNO_ID}/courses
+
+{
+  "nome": "Matemática I",
+  "data_cadastro": "2025-11-11"
+}
+
+
+Retorno contém:
+
+"id": "DISC_ID"
+```
+
+### ✔️ 6. Lançar notas (UMA nota por requisição)
+```bash
+PATCH /students/{ALUNO_ID}/courses/{DISC_ID}/grade
+
+E1:
+{
+  "estagio": "E1",
+  "nota": 8
+}
+
+E2:
+{
+  "estagio": "E2",
+  "nota": 7
+}
+
+E3:
+{
+  "estagio": "E3",
+  "nota": 9
+}
+
+
+Após E3:
+
+média é calculada
+
+status é atualizado (APROVADO/REPROVADO)
+```
+
+### ✔️ 7. Listar disciplinas do aluno
+```bash
+GET /students/{ALUNO_ID}/courses
+
+Filtros disponíveis:
+
+Nome: ?name=mat
+
+Só disciplinas com nota em um estágio: ?stage_with_grade=E1
+
+Datas:
+
+?date_min=2025-11-01&date_max=2025-11-30
+```
+
+### ✔️ 8. Gerar boletim do aluno (CSV)
+```bash
+GET /students/{ALUNO_ID}/report.csv
+
+Inclui:
+
+nome
+
+matrícula/cpf
+
+status ativo
+
+todas as disciplinas, notas e média
+```
+
+### ✔️ 9. Gerar relatório da turma (CSV)
+```bash
+GET /reports/class.csv
+
+Lista todos os alunos e disciplinas.
+```
+### ✔️ 10. Consultar logs de auditoria
+Todos os logs:
+
+GET /logs
+
+Logs de um aluno específico:
+
+GET /logs?aid=ALUNO_ID
+
+### Exemplos de ações registradas:
+
+ALUNO_CRIADO
+
+DISCIPLINA_CRIADA
+
+NOTA_ATUALIZADA
+
+ALUNO_STATUS_ALTERADO
+
+ALUNO_REMOVIDO
+
+### 📌 Regras de Negócio
+
+Média final = E1×0.30 + E2×0.30 + E3×0.40
+
+Média ≥ 7 → APROVADO
+
+Média < 7 → REPROVADO
+
+Se falta qualquer nota → EM_CURSO
+
+As notas são lançadas individualmente
+
+Todos os dados persistem em JSON no diretório /data

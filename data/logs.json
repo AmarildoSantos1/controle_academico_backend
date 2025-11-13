@@ -1,0 +1,68 @@
+[
+  {
+    "id": "6b8af278-3a90-4bf1-9e5b-b84630d8e2c6",
+    "timestamp": "2025-11-13T11:05:05",
+    "actor": "admin",
+    "action": "ALUNO_CRIADO",
+    "aluno_id": "80887e30-b08b-446d-883a-e9ef31fb77fb",
+    "details": {
+      "nome": "Joao Silva",
+      "tipo_id": "MATRICULA",
+      "identificador": "2025A0002",
+      "ativo": true
+    }
+  },
+  {
+    "id": "272e579d-6224-4404-9788-861a9d9b54fe",
+    "timestamp": "2025-11-13T13:27:40",
+    "actor": "admin",
+    "action": "DISCIPLINA_CRIADA",
+    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "details": {
+      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "nome": "Matemática"
+    }
+  },
+  {
+    "id": "7b3016c9-eb30-4147-96ab-676ec883c7b4",
+    "timestamp": "2025-11-13T13:35:27",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "details": {
+      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "estagio": "E1",
+      "nota": 8.0,
+      "media": null,
+      "status": "EM_CURSO"
+    }
+  },
+  {
+    "id": "720eb07b-feb6-4cc7-b1a1-c9918bdc0093",
+    "timestamp": "2025-11-13T13:35:34",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "details": {
+      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "estagio": "E2",
+      "nota": 7.0,
+      "media": null,
+      "status": "EM_CURSO"
+    }
+  },
+  {
+    "id": "4bfcb7c7-ba4e-4dea-8bfe-08413ece0637",
+    "timestamp": "2025-11-13T13:35:41",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "details": {
+      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "estagio": "E3",
+      "nota": 9.0,
+      "media": 8.1,
+      "status": "APROVADO"
+    }
+  }
+]
