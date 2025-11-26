@@ -64,5 +64,43 @@
       "media": 8.1,
       "status": "APROVADO"
     }
+  },
+  {
+    "id": "ec753c3f-0bfb-4114-9ce1-7b8bdae74918",
+    "timestamp": "2025-11-26T10:01:38",
+    "actor": "admin",
+    "action": "ALUNO_CRIADO",
+    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "details": {
+      "nome": "Pedro Paulo Vasconcelos",
+      "tipo_id": "MATRICULA",
+      "identificador": "24",
+      "ativo": true
+    }
+  },
+  {
+    "id": "d49e40c6-873e-4f54-b934-8fc87d7ab732",
+    "timestamp": "2025-11-26T10:02:56",
+    "actor": "admin",
+    "action": "DISCIPLINA_CRIADA",
+    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "details": {
+      "disciplina_id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
+      "nome": "SOCIOLOGIA"
+    }
+  },
+  {
+    "id": "7786d549-9fae-4cf6-9a3c-9fcf25923355",
+    "timestamp": "2025-11-26T10:03:30",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "details": {
+      "disciplina_id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
+      "estagio": "E1",
+      "nota": 6.0,
+      "media": null,
+      "status": "EM_CURSO"
+    }
   }
 ]

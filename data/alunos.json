@@ -1,5 +1,25 @@
 [
   {
+    "id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "nome": "Pedro Paulo Vasconcelos",
+    "tipo_id": "MATRICULA",
+    "identificador": "24",
+    "data_cadastro": "2025-11-26",
+    "ativo": true,
+    "disciplinas": [
+      {
+        "id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
+        "nome": "SOCIOLOGIA",
+        "data_cadastro": "2025-11-26",
+        "notas": {
+          "E1": 6.0,
+          "E2": null,
+          "E3": null
+        }
+      }
+    ]
+  },
+  {
     "id": "80887e30-b08b-446d-883a-e9ef31fb77fb",
     "nome": "Joao Silva",
     "tipo_id": "MATRICULA",
