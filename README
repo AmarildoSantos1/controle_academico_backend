@@ -1,114 +1,161 @@
-# 📘 Sistema de Controle Acadêmico (Backend)
 
-## 📌 Descrição Geral
+📘 Sistema de Controle Acadêmico (Backend)
+📌 Descrição Geral
 
-Este projeto implementa um **Sistema de Controle Acadêmico** para uso por coordenadores, permitindo:
+Este projeto implementa um Sistema de Controle Acadêmico completo, destinado a uso por coordenação, permitindo:
 
-- Cadastro e gerenciamento de alunos  
-- Ativação/inativação de alunos  
-- Cadastro de disciplinas por aluno  
-- Lançamento de notas por estágio (E1, E2, E3)  
-- Cálculo automático da média ponderada (30/30/40)  
-- Definição automática do status (APROVADO, REPROVADO, EM_CURSO)  
-- Geração de relatórios CSV (aluno e turma)  
-- Sistema de autenticação por token  
-- Logs de auditoria de todas as ações  
+📚 Cadastro e gerenciamento de alunos
 
-Todo o sistema roda exclusivamente no **backend**, utilizando arquivos JSON como persistência.
+🔄 Ativação e inativação de alunos
 
----
+📝 Registro de disciplinas por aluno
 
-# ⚙️ Tecnologias Utilizadas
+🧮 Lançamento de notas (E1, E2, E3)
 
-- **Python 3.10+**
-- **FastAPI**
-- **Uvicorn**
-- **Pydantic**
-- **CORS Middleware**
-- **JSON como banco de dados**
-- **Autenticação Token-based**
+➗ Cálculo automático da média ponderada (30%, 30%, 40%)
 
----
+🎯 Status automático do aluno (APROVADO, REPROVADO, EM_CURSO)
 
-# 📁 Estrutura do Projeto
+📄 Relatórios CSV (por aluno e por turma)
 
+🔐 Autenticação baseada em token
+
+📑 Logs de auditoria
+
+🖥️ Interface de linha de comando (CLI)
+
+💾 Persistência usando arquivos JSON
+
+⚙️ Tecnologias Utilizadas
+
+Python 3.10+
+
+FastAPI
+
+Uvicorn
+
+Pydantic
+
+Requests
+
+Pytest
+
+JSON para persistência
+
+CORS Middleware
+
+📁 Estrutura do Projeto
 backend/
-│── app.py
-│── auth.py
-│── models.py
-│── storage.py
-│── util.py
-│── requirements.txt
+│── app.py               # API principal
+│── auth.py              # Autenticação (hash, salt, tokens)
+│── models.py            # Modelos Pydantic
+│── storage.py           # Persistência em JSON
+│── util.py              # Funções auxiliares
+│── cli.py               # Interface de terminal
+│── requirements.txt     # Dependências
 │
-└── data/
-├── admin.json
-├── tokens.json
-├── alunos.json
-└── logs.json
+└── data/                # Persistência local
+    ├── admin.json
+    ├── tokens.json
+    ├── alunos.json
+    └── logs.json
 
-
----
-
-# 🚀 Instalação e Execução
-
-## 1️⃣ Criar ambiente virtual
-
-### Windows
-```bash
+🚀 Instalação e Execução
+1️⃣ Criar ambiente virtual
+Windows
 python -m venv .venv
 .\.venv\Scripts\activate
-```
 
-### Linux/Mac
-```bash
+Linux/Mac
 python -m venv .venv
 source .venv/bin/activate
-```
-## 2️⃣ Instalar dependências
-```bash
+
+2️⃣ Instalar dependências
 pip install -r requirements.txt
-```
 
-## 3️⃣ Iniciar servidor
-```bash
+3️⃣ Iniciar servidor
 uvicorn app:app --reload --port 8000
-```
-## 4️⃣ Acessar documentação interativa
-```bash
-👉 http://127.0.0.1:8000/docs
-```
 
-## 🔐 Autenticação
 
-Todas as rotas (exceto login) exigem o header:
+Acesse:
 
-```bash 
+API: http://127.0.0.1:8000
+
+Swagger: http://127.0.0.1:8000/docs
+
+🔐 Autenticação (Token)
+
+Todas as rotas, exceto login, exigem:
+
 Authorization: Bearer SEU_TOKEN_AQUI
-```
-### No postman - Login (obter token)
-```bash
+
+Login
 POST /auth/login
 
+
 Body:
+
 {
   "username": "admin",
   "password": "1234"
 }
 
+
 Retorno:
+
 {
   "token": "abcd1234..."
 }
-```
-### 🧪 Roteiro Completo de Testes (Postman / Swagger)
-### ✔️ 1. Login
+
+
+Senha é armazenada com PBKDF2 + SALT.
+
+🖥️ CLI (Interface via Terminal)
+
+Execute em outro terminal:
+
+python cli.py
+
+
+Menu:
+
+1) Login
+2) Listar alunos
+3) Criar aluno
+4) Adicionar disciplina
+5) Lançar nota
+
+🧪 Testes Automatizados
+
+Os testes utilizam Pytest.
+
+Execute:
+
+pytest
+
+
+Saída esperada:
+
+7 passed in 0.02s
+
+
+Testes cobrem:
+
+Cálculo de média
+
+Cálculo de status
+
+Funções utilitárias
+
+Validação de datas
+
+🧩 Roteiro Completo de Teste (Swagger/Postman)
+✔️ 1. Login
 
 POST /auth/login
 
-Copia o token → usar nas próximas requisições.
+✔️ 2. Criar aluno
 
-### ✔️ 2. Criar aluno
-```bash
 POST /students
 
 {
@@ -119,142 +166,105 @@ POST /students
   "ativo": true
 }
 
-
-O retorno fornecerá:
-
-"id": "ALUNO_ID"
-```
-
-### ✔️ 3. Listar alunos
+✔️ 3. Listar alunos
 
 GET /students
 
-### ✔️ 4. Ativar ou desativar aluno
-```bash
-PATCH /students/{ALUNO_ID}/status
+✔️ 4. Ativar/Inativar aluno
 
-Desativar:
-{
-  "ativo": false
-}
+PATCH /students/{ID}/status
 
-Ativar:
-{
-  "ativo": true
-}
-```
-### ✔️ 5. Adicionar disciplina ao aluno
-```bash
-POST /students/{ALUNO_ID}/courses
+✔️ 5. Adicionar disciplina
 
-{
-  "nome": "Matemática I",
-  "data_cadastro": "2025-11-11"
-}
+POST /students/{ID}/courses
 
+✔️ 6. Lançar notas
 
-Retorno contém:
+PATCH /students/{ID}/courses/{DISC_ID}/grade
 
-"id": "DISC_ID"
-```
+1 requisição por estágio (E1, E2, E3).
+Após E3 → média e status são atualizados automaticamente.
 
-### ✔️ 6. Lançar notas (UMA nota por requisição)
-```bash
-PATCH /students/{ALUNO_ID}/courses/{DISC_ID}/grade
+✔️ 7. Listar disciplinas
 
-E1:
-{
-  "estagio": "E1",
-  "nota": 8
-}
+GET /students/{ID}/courses
 
-E2:
-{
-  "estagio": "E2",
-  "nota": 7
-}
+Filtros:
 
-E3:
-{
-  "estagio": "E3",
-  "nota": 9
-}
+?name=mat
+?stage_with_grade=E1
+?date_min=2025-01-01&date_max=2025-01-31
 
+✔️ 8. Gerar boletim (CSV)
 
-Após E3:
+GET /students/{ID}/report.csv
 
-média é calculada
+✔️ 9. Relatório geral da turma
 
-status é atualizado (APROVADO/REPROVADO)
-```
-
-### ✔️ 7. Listar disciplinas do aluno
-```bash
-GET /students/{ALUNO_ID}/courses
-
-Filtros disponíveis:
-
-Nome: ?name=mat
-
-Só disciplinas com nota em um estágio: ?stage_with_grade=E1
-
-Datas:
-
-?date_min=2025-11-01&date_max=2025-11-30
-```
-
-### ✔️ 8. Gerar boletim do aluno (CSV)
-```bash
-GET /students/{ALUNO_ID}/report.csv
-
-Inclui:
-
-nome
-
-matrícula/cpf
-
-status ativo
-
-todas as disciplinas, notas e média
-```
-
-### ✔️ 9. Gerar relatório da turma (CSV)
-```bash
 GET /reports/class.csv
 
-Lista todos os alunos e disciplinas.
-```
-### ✔️ 10. Consultar logs de auditoria
-Todos os logs:
-
+✔️ 10. Consultar logs
 GET /logs
-
-Logs de um aluno específico:
-
 GET /logs?aid=ALUNO_ID
 
-### Exemplos de ações registradas:
+📌 Regras de Negócio
+Média Final
+MÉDIA = E1×0.30 + E2×0.30 + E3×0.40
 
-ALUNO_CRIADO
+Status do aluno
 
-DISCIPLINA_CRIADA
+Média ≥ 7.0 → APROVADO
 
-NOTA_ATUALIZADA
+Média < 7.0 → REPROVADO
 
-ALUNO_STATUS_ALTERADO
+Falta alguma nota → EM_CURSO
 
-ALUNO_REMOVIDO
+Persistência
 
-### 📌 Regras de Negócio
+Todos os dados são salvos automaticamente em /data.
 
-Média final = E1×0.30 + E2×0.30 + E3×0.40
+🛠️ Problemas Comuns e Soluções
+❗ ModuleNotFoundError: No module named 'storage' ao rodar pytest
 
-Média ≥ 7 → APROVADO
+Corrigido adicionando no início dos testes:
 
-Média < 7 → REPROVADO
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-Se falta qualquer nota → EM_CURSO
+❗ VS Code: Import "pytest" could not be resolved
 
-As notas são lançadas individualmente
+Solução:
 
-Todos os dados persistem em JSON no diretório /data
+Ativar o venv
+
+Instalar:
+
+pip install pytest
+
+
+Selecionar o interpretador correto no VS Code (Ctrl+Shift+P)
+
+❗ VS Code: Import "requests" could not be resolved
+
+Solução:
+
+pip install requests
+
+🎯 Conclusão
+
+Este backend implementa:
+
+API completa
+
+Autenticação segura
+
+Persistência em JSON
+
+CLI para uso rápido
+
+Relatórios CSV
+
+Logs de auditoria
+
+Testes automatizados
+
