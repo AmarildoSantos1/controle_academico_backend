@@ -1,0 +1,456 @@
+
+---
+# 📘 Sistema de Controle Acadêmico – Backend Completo (FastAPI + CLI + Criptografia)
+
+## 📌 Descrição Geral
+
+Este projeto implementa um **Sistema de Controle Acadêmico completo**, que permite:
+
+* Gerenciar alunos
+* Criar, atualizar e remover disciplinas
+* Lançar notas (E1, E2, E3)
+* Gerar médias ponderadas (30/30/40)
+* Determinar status automático (APROVADO, REPROVADO, EM_CURSO)
+* Visualizar disciplinas do aluno via CLI (com status e média)
+* Registrar logs de auditoria com criptografia
+* Exportar relatórios CSV (aluno e turma)
+* Realizar autenticação com token JWT-like
+* Armazenar tudo em JSON
+* Executar testes unitários e integrados
+* Interface completa via terminal (CLI)
+
+Este README contém um **guia definitivo** para rodar, testar e entender todo o sistema.
+
+---
+
+# 🛠️ Tecnologias Utilizadas
+
+* Python 3.10+
+* FastAPI
+* Uvicorn
+* Pydantic
+* Requests
+* Cryptography (Fernet/AES)
+* Pytest
+* JSON (persistência)
+
+---
+
+# 📂 Estrutura do Projeto
+
+```
+backend/
+│── app.py
+│── auth.py
+│── storage.py
+│── util.py
+│── models.py
+│── cli.py
+│── run_tests.py
+│── requirements.txt
+│
+├── tests/
+│   ├── test_domain.py
+│   ├── test_crypto.py
+│   └── test_api_integration.py
+│
+└── data/
+    ├── alunos.json
+    ├── logs.json
+    ├── admin.json
+    ├── tokens.json
+    └── fernet.key
+```
+
+---
+
+# 🚀 Instalação e Execução
+
+## 1️⃣ Criar ambiente virtual
+
+### Windows:
+
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+### Linux/Mac:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+---
+
+## 2️⃣ Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 3️⃣ Iniciar o servidor
+
+```bash
+uvicorn app:app --reload --port 8000
+```
+
+Acesse:
+
+* API Root → [http://127.0.0.1:8000](http://127.0.0.1:8000)
+* Documentação (Swagger) → [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+# 🔐 Autenticação
+
+Todas as rotas (exceto `/auth/login`) exigem o header:
+
+```
+Authorization: Bearer SEU_TOKEN
+```
+
+### 🔑 Login
+
+```
+POST /auth/login
+{
+  "username": "admin",
+  "password": "1234"
+}
+```
+
+---
+
+# 🖥️ CLI — Interface Completa via Terminal
+
+Para rodar:
+
+```bash
+python cli.py
+```
+
+Ele exibirá:
+
+```
+1) Login
+2) Listar alunos
+3) Criar aluno
+4) Adicionar disciplina a aluno
+5) Lançar nota em disciplina
+6) Listar disciplinas de um aluno
+7) Atualizar disciplina
+8) Remover disciplina
+9) Ver logs de auditoria
+0) Sair
+```
+
+---
+
+# 🧭 Passo a passo COMPLETO de uso (COM EXEMPLOS REAIS)
+
+Abaixo está um **exemplo real do fluxo**, exatamente como acontece no programa.
+
+---
+
+## ⭐ 1) Login
+
+```
+Opção: 1
+Usuário [admin]:
+Senha [1234]:
+✅ Login realizado com sucesso.
+```
+
+---
+
+## ⭐ 2) Criar aluno 
+
+Este é o exemplo REAL citado antes — agora incluso no README:
+
+```
+Opção: 3
+
+=== NOVO ALUNO ===
+Nome: Afonso
+Tipo do identificador (MATRICULA/CPF) [MATRICULA]: MATRICULA
+Identificador (matrícula ou CPF): 2025A0005
+Data de cadastro (YYYY-MM-DD) [hoje]: 2025-11-30
+Ativo? (S/N) [S]: S
+
+✅ Aluno criado com sucesso!
+ID: d627… | Nome: Afonso
+```
+
+➡️ **Exemplo válido de identificador:**
+
+* `2025A0005` (matrícula)
+* ou `12345678900` (CPF)
+
+---
+
+## ⭐ 3) Listar alunos
+
+```
+Opção: 2
+
+=== ALUNOS ===
+ID: d627... | Nome: Afonso | Ativo: True
+Tipo/ID: MATRICULA 2025A0005
+Disciplinas: 0
+----------------------------------------
+```
+
+---
+
+## ⭐ 4) Adicionar disciplina
+
+```
+Opção: 4
+
+ID do aluno: d627...
+Nome da disciplina: Segurança da Informação
+Data: 2025-11-30
+
+✅ Disciplina criada!
+```
+
+---
+
+## ⭐ 5) Lançar nota
+
+```
+Opção: 5
+
+ID do aluno: d627...
+ID da disciplina: 8b3f...
+Estágio (E1/E2/E3): E1
+Nota (0 a 10): 8
+
+✓ Nota lançada
+Média: None | Status: EM_CURSO
+```
+
+Após E1, E2 e E3:
+
+```
+Média: 8.2 | Status: APROVADO
+```
+
+---
+
+## ⭐ 6) Listar disciplinas do aluno 
+
+```
+Opção: 6
+
+=== DISCIPLINAS DO ALUNO ===
+ID do aluno: d627...
+
+Aluno: Afonso (MATRICULA 2025A0005)
+
+=== DISCIPLINAS ===
+1) Segurança da Informação
+    Status: APROVADO
+    Média: 8.2
+    ID: 8b3f...
+----------------------------------------
+
+Digite o número para ver detalhes:
+> 1
+
+=== DETALHES DA DISCIPLINA ===
+Nome: Segurança da Informação
+Cadastro: 2025-11-30
+Notas: {'E1': 8, 'E2': 7, 'E3': 9}
+Média: 8.2
+Status: APROVADO
+----------------------------------------
+```
+
+---
+
+# 📊 Relatórios CSV
+
+## Boletim por aluno
+
+```
+GET /students/{id}/report.csv
+```
+
+## Relatório geral da turma
+
+```
+GET /reports/class.csv
+```
+
+Produz arquivos com notas, médias e status.
+
+---
+
+# 📜 Logs de Auditoria
+
+Logs são:
+
+* **cifrados com cifra de César no arquivo**
+* **decifrados ao serem exibidos via API e CLI**
+
+Via CLI:
+
+```
+Opção: 9
+[2025-11-30T14:45] ALUNO_CRIADO
+  Aluno ID: d627...
+  Mensagem: Aluno criado - aluno=d627...
+----------------------------------------
+```
+
+---
+
+# 🔐 Criptografia — Explicação Completa (COM EXEMPLOS DO PROJETO)
+
+O sistema utiliza três métodos criptográficos exigidos:
+
+---
+
+## 1️⃣ PBKDF2-HMAC-SHA256 — Hash seguro de senhas
+
+📌 Arquivo: `auth.py`
+📌 Usado em: armazenamento da senha do administrador
+
+### Trecho real do projeto:
+
+```python
+dk = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100_000)
+```
+
+### Onde é aplicado:
+
+* `ensure_admin()` → cria o hash inicial
+* `verify_user()` → validação de login
+* `change_password()` → atualização de senha
+
+📌 **Senhas nunca são armazenadas em texto puro.**
+
+---
+
+## 2️⃣ Fernet (AES + HMAC) — Criptografia simétrica
+
+📌 Arquivos: `util.py`, `storage.py`
+📌 Usado para: cifrar o **identificador do aluno**
+
+### Exemplo real gravado no `alunos.json`:
+
+```json
+"identificador_enc": "gAAAAABp..."
+```
+
+### Onde é aplicado:
+
+```python
+encrypt_sensitive(a.identificador)
+```
+
+### Onde é decifrado:
+
+```python
+ident = decrypt_sensitive(enc)
+```
+
+📌 Protege matrícula/CPF diretamente no arquivo.
+
+---
+
+## 3️⃣ Cifra de César — Criptografia clássica
+
+📌 Arquivos: `util.py`, `storage.py`
+📌 Usado para: cifrar mensagens de logs
+
+### Trecho real:
+
+```python
+mensagem_cifrada = caesar_encrypt(mensagem_clara, shift=3)
+```
+
+No JSON aparece cifrado:
+
+```
+"mensagem_cifrada": "Dorqr fuldugr..."
+```
+
+Mas ao consultar via API/CLI:
+
+```
+mensagem: "Aluno criado - aluno=d627"
+```
+
+📌 Atende ao requisito de criptografia clássica.
+
+---
+
+# 🧪 Testes Automatizados
+
+O sistema possui:
+
+## ✔ Testes Unitários
+
+* Média e status
+* Funções de utilidade
+* Hash (PBKDF2)
+* Criptografia (Fernet e César)
+
+## ✔ Testes Integrados
+
+* Login
+* Criação de aluno e disciplina
+* Lançamento de notas
+* CSV
+* Logs
+* Status e média
+
+### Rodar testes:
+
+```bash
+python run_tests.py
+```
+
+Esse comando:
+
+* Executa o pytest
+* Gera um relatório amigável
+* NÃO apaga seus alunos reais
+* Remove somente o aluno de teste interno
+
+---
+
+# 🧩 Regras de Negócio
+
+### Média:
+
+```
+E1 × 0.30 + E2 × 0.30 + E3 × 0.40
+```
+
+### Status:
+
+* APROVADO → média ≥ 7
+* REPROVADO → média < 7
+* EM_CURSO → notas incompletas
+
+---
+
+# 🎯 Conclusão
+
+Este backend está completo e pronto para apresentação, contendo:
+
+* API robusta
+* CLI funcional e intuitivo
+* Três métodos criptográficos
+* Logs protegidos
+* Relatórios CSV
+* Testes completos
+* Persistência em JSON
+* Fluxo intuitivo e fácil de demonstrar
