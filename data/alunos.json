@@ -1,48 +1,62 @@
 [
   {
-    "id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
-    "nome": "Pedro Paulo Vasconcelos",
+    "id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "nome": "Afonso",
     "tipo_id": "MATRICULA",
-    "identificador": "24",
-    "data_cadastro": "2025-11-26",
+    "identificador": "2025A0005",
+    "identificador_enc": "gAAAAABpLGcTBDC2nwURylOGr_QzW4V6nVstBzamiiUgvfj-K_XqSR53Gov3-hrqc3VoThtI7uNGG17uSCZ6TmNfMbzpdOxJaA==",
+    "data_cadastro": "2025-11-30",
     "ativo": true,
     "disciplinas": [
       {
-        "id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
-        "nome": "SOCIOLOGIA",
-        "data_cadastro": "2025-11-26",
+        "id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+        "nome": "Redes de Computadores",
+        "data_cadastro": "2025-11-30",
         "notas": {
-          "E1": 6.0,
-          "E2": null,
-          "E3": null
+          "E1": 8.0,
+          "E2": 6.0,
+          "E3": 9.0
         }
       }
     ]
   },
   {
-    "id": "80887e30-b08b-446d-883a-e9ef31fb77fb",
-    "nome": "Joao Silva",
-    "tipo_id": "MATRICULA",
-    "identificador": "2025A0002",
-    "data_cadastro": "2025-11-12",
-    "ativo": true,
-    "disciplinas": []
-  },
-  {
-    "id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
-    "nome": "Maria Silva",
+    "id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "nome": "João Teste",
     "tipo_id": "MATRICULA",
     "identificador": "2025A0001",
+    "identificador_enc": "gAAAAABpLGcTEH-BbISy56rC34QjMGNIKKf_D2AnmSsEC27sDTVN6-7F86bbPnJS2a0w8_amwasJw88WgCdzlfHdwpxcwsHd5w==",
     "data_cadastro": "2025-11-11",
     "ativo": true,
     "disciplinas": [
       {
-        "id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
-        "nome": "Matemática",
+        "id": "dee864af-509a-4cfc-8d1c-f9fc65f193a6",
+        "nome": "Segurança da Informação",
         "data_cadastro": "2025-11-11",
         "notas": {
           "E1": 8.0,
           "E2": 7.0,
+          "E3": 9.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
+    "nome": "Lucas Guimoreira",
+    "tipo_id": "MATRICULA",
+    "identificador": "024",
+    "identificador_enc": "gAAAAABpLGcTE08YjHJomJvXVog-9KOWzsJdzdx4odmyGEXyPOCuzq_2G_EbscGxz0Z1oMnhbhNzfPy7CbzYMHwEqiXeWsM5vQ==",
+    "data_cadastro": "2025-11-27",
+    "ativo": true,
+    "disciplinas": [
+      {
+        "id": "accf5e67-42fc-48a1-b31c-838b239faa0a",
+        "nome": "LEAGUE OF LEGENDS",
+        "data_cadastro": "2025-11-27",
+        "notas": {
+          "E1": 5.0,
+          "E2": 8.0,
           "E3": 9.0
         }
       }

@@ -73,3 +73,5 @@ class LogOut(BaseModel):
     action: str
     aluno_id: Optional[str] = None
     details: dict = Field(default_factory=dict)
+    mensagem: Optional[str] = None
+

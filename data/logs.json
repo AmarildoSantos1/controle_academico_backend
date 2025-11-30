@@ -1,106 +1,370 @@
 [
   {
-    "id": "6b8af278-3a90-4bf1-9e5b-b84630d8e2c6",
-    "timestamp": "2025-11-13T11:05:05",
+    "id": "e8d0de0e-e561-4837-ae78-6656a75ea3ac",
+    "timestamp": "2025-11-27T14:12:08",
     "actor": "admin",
     "action": "ALUNO_CRIADO",
-    "aluno_id": "80887e30-b08b-446d-883a-e9ef31fb77fb",
+    "aluno_id": "2d2718cb-9306-4c79-9f4d-c7b973370e22",
     "details": {
-      "nome": "Joao Silva",
+      "nome": "João Teste",
       "tipo_id": "MATRICULA",
-      "identificador": "2025A0002",
+      "identificador": "2025A0001",
       "ativo": true
-    }
+    },
+    "mensagem_cifrada": "DOXQR_FULDGR - doxqr=2g2718fe-9306-4f79-9i4g-f7e973370h22"
   },
   {
-    "id": "272e579d-6224-4404-9788-861a9d9b54fe",
-    "timestamp": "2025-11-13T13:27:40",
+    "id": "fe1ea94b-4472-499a-bb28-67bc9228ec70",
+    "timestamp": "2025-11-27T14:12:08",
     "actor": "admin",
     "action": "DISCIPLINA_CRIADA",
-    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "aluno_id": "2d2718cb-9306-4c79-9f4d-c7b973370e22",
     "details": {
-      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
-      "nome": "Matemática"
-    }
+      "disciplina_id": "982f3a2f-83ca-4a93-8742-a77f871765af",
+      "nome": "Segurança da Informação"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_FULDGD - doxqr=2g2718fe-9306-4f79-9i4g-f7e973370h22"
   },
   {
-    "id": "7b3016c9-eb30-4147-96ab-676ec883c7b4",
-    "timestamp": "2025-11-13T13:35:27",
+    "id": "7ca72256-5c86-468f-a116-8718d7bb53ad",
+    "timestamp": "2025-11-27T14:12:08",
     "actor": "admin",
     "action": "NOTA_ATUALIZADA",
-    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "aluno_id": "2d2718cb-9306-4c79-9f4d-c7b973370e22",
     "details": {
-      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "disciplina_id": "982f3a2f-83ca-4a93-8742-a77f871765af",
       "estagio": "E1",
       "nota": 8.0,
       "media": null,
       "status": "EM_CURSO"
-    }
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=2g2718fe-9306-4f79-9i4g-f7e973370h22"
   },
   {
-    "id": "720eb07b-feb6-4cc7-b1a1-c9918bdc0093",
-    "timestamp": "2025-11-13T13:35:34",
+    "id": "4d583e2d-e4ea-4410-9edc-6052bac06fb5",
+    "timestamp": "2025-11-27T14:12:08",
     "actor": "admin",
     "action": "NOTA_ATUALIZADA",
-    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "aluno_id": "2d2718cb-9306-4c79-9f4d-c7b973370e22",
     "details": {
-      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "disciplina_id": "982f3a2f-83ca-4a93-8742-a77f871765af",
       "estagio": "E2",
       "nota": 7.0,
       "media": null,
       "status": "EM_CURSO"
-    }
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=2g2718fe-9306-4f79-9i4g-f7e973370h22"
   },
   {
-    "id": "4bfcb7c7-ba4e-4dea-8bfe-08413ece0637",
-    "timestamp": "2025-11-13T13:35:41",
+    "id": "7f965c4b-a2d6-4932-a28f-acdc52fef8c1",
+    "timestamp": "2025-11-27T14:12:08",
     "actor": "admin",
     "action": "NOTA_ATUALIZADA",
-    "aluno_id": "93949b6f-8c16-4e5c-bcff-891ecec56d5a",
+    "aluno_id": "2d2718cb-9306-4c79-9f4d-c7b973370e22",
     "details": {
-      "disciplina_id": "f14b477d-23e1-4cc3-a2d1-d6f9a33f816f",
+      "disciplina_id": "982f3a2f-83ca-4a93-8742-a77f871765af",
       "estagio": "E3",
       "nota": 9.0,
       "media": 8.1,
       "status": "APROVADO"
-    }
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=2g2718fe-9306-4f79-9i4g-f7e973370h22"
   },
   {
-    "id": "ec753c3f-0bfb-4114-9ce1-7b8bdae74918",
-    "timestamp": "2025-11-26T10:01:38",
+    "id": "12581b10-693d-4267-8775-9134d445566e",
+    "timestamp": "2025-11-27T14:18:41",
     "actor": "admin",
     "action": "ALUNO_CRIADO",
-    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "aluno_id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
     "details": {
-      "nome": "Pedro Paulo Vasconcelos",
+      "nome": "Lucas Guimoreira",
       "tipo_id": "MATRICULA",
-      "identificador": "24",
+      "identificador": "024",
       "ativo": true
-    }
+    },
+    "mensagem_cifrada": "DOXQR_FULDGR - doxqr=he4dh131-8525-4450-ef5e-gd26ghhhhegd"
   },
   {
-    "id": "d49e40c6-873e-4f54-b934-8fc87d7ab732",
-    "timestamp": "2025-11-26T10:02:56",
+    "id": "5e195367-14c3-4f0c-a0bc-e5653615095e",
+    "timestamp": "2025-11-27T14:19:30",
     "actor": "admin",
     "action": "DISCIPLINA_CRIADA",
-    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "aluno_id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
     "details": {
-      "disciplina_id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
-      "nome": "SOCIOLOGIA"
-    }
+      "disciplina_id": "accf5e67-42fc-48a1-b31c-838b239faa0a",
+      "nome": "LEAGUE OF LEGENDS"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_FULDGD - doxqr=he4dh131-8525-4450-ef5e-gd26ghhhhegd"
   },
   {
-    "id": "7786d549-9fae-4cf6-9a3c-9fcf25923355",
-    "timestamp": "2025-11-26T10:03:30",
+    "id": "f04f2853-9c72-42dd-8a1f-a45c9933d6ef",
+    "timestamp": "2025-11-27T14:19:48",
     "actor": "admin",
     "action": "NOTA_ATUALIZADA",
-    "aluno_id": "9eb49940-af82-408b-96bb-54a85bb3f0d8",
+    "aluno_id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
     "details": {
-      "disciplina_id": "e0f52856-51b8-47ab-ae33-33b8eee078cd",
+      "disciplina_id": "accf5e67-42fc-48a1-b31c-838b239faa0a",
       "estagio": "E1",
+      "nota": 5.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=he4dh131-8525-4450-ef5e-gd26ghhhhegd"
+  },
+  {
+    "id": "895a5b62-6619-4f64-8ace-7f8822a9a825",
+    "timestamp": "2025-11-27T14:20:11",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
+    "details": {
+      "disciplina_id": "accf5e67-42fc-48a1-b31c-838b239faa0a",
+      "estagio": "E2",
+      "nota": 8.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=he4dh131-8525-4450-ef5e-gd26ghhhhegd"
+  },
+  {
+    "id": "38cd9e36-6e27-4828-a8c2-c272ca15a3fb",
+    "timestamp": "2025-11-27T14:20:29",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "eb4ae131-8525-4450-bc5b-da26deeeebda",
+    "details": {
+      "disciplina_id": "accf5e67-42fc-48a1-b31c-838b239faa0a",
+      "estagio": "E3",
+      "nota": 9.0,
+      "media": 7.5,
+      "status": "APROVADO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=he4dh131-8525-4450-ef5e-gd26ghhhhegd"
+  },
+  {
+    "id": "1c61b3a6-8ad7-4ac0-b5bd-0ca3e7dd7d27",
+    "timestamp": "2025-11-27T14:25:32",
+    "actor": "admin",
+    "action": "ALUNO_CRIADO",
+    "aluno_id": "7f3346a4-781c-4cac-8d83-a684d306e96f",
+    "details": {
+      "nome": "João Teste",
+      "tipo_id": "MATRICULA",
+      "identificador": "2025A0001",
+      "ativo": true
+    },
+    "mensagem_cifrada": "DOXQR_FULDGR - doxqr=7i3346d4-781f-4fdf-8g83-d684g306h96i"
+  },
+  {
+    "id": "4a32121c-e13b-4024-bfd0-9aea0adb0e0e",
+    "timestamp": "2025-11-27T14:25:32",
+    "actor": "admin",
+    "action": "DISCIPLINA_CRIADA",
+    "aluno_id": "7f3346a4-781c-4cac-8d83-a684d306e96f",
+    "details": {
+      "disciplina_id": "daf4e10b-32c1-4a51-a18f-464315103275",
+      "nome": "Segurança da Informação"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_FULDGD - doxqr=7i3346d4-781f-4fdf-8g83-d684g306h96i"
+  },
+  {
+    "id": "9f76f105-df00-43c3-a8c2-3b57e97550a5",
+    "timestamp": "2025-11-27T14:25:32",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "7f3346a4-781c-4cac-8d83-a684d306e96f",
+    "details": {
+      "disciplina_id": "daf4e10b-32c1-4a51-a18f-464315103275",
+      "estagio": "E1",
+      "nota": 8.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=7i3346d4-781f-4fdf-8g83-d684g306h96i"
+  },
+  {
+    "id": "e313a9f7-6eac-4c49-a2f2-61e8669f722e",
+    "timestamp": "2025-11-27T14:25:32",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "7f3346a4-781c-4cac-8d83-a684d306e96f",
+    "details": {
+      "disciplina_id": "daf4e10b-32c1-4a51-a18f-464315103275",
+      "estagio": "E2",
+      "nota": 7.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=7i3346d4-781f-4fdf-8g83-d684g306h96i"
+  },
+  {
+    "id": "fb7ccd4f-a24e-4912-b11f-5437c352f5c3",
+    "timestamp": "2025-11-27T14:25:32",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "7f3346a4-781c-4cac-8d83-a684d306e96f",
+    "details": {
+      "disciplina_id": "daf4e10b-32c1-4a51-a18f-464315103275",
+      "estagio": "E3",
+      "nota": 9.0,
+      "media": 8.1,
+      "status": "APROVADO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=7i3346d4-781f-4fdf-8g83-d684g306h96i"
+  },
+  {
+    "id": "cf1b8527-a78e-4f2d-990a-2c18d98f3690",
+    "timestamp": "2025-11-30T12:29:55",
+    "actor": "admin",
+    "action": "ALUNO_CRIADO",
+    "aluno_id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "details": {
+      "nome": "João Teste",
+      "tipo_id": "MATRICULA",
+      "identificador": "2025A0001",
+      "ativo": true
+    },
+    "mensagem_cifrada": "DOXQR_FULDGR - doxqr=dii4h515-0hfe-45d3-995g-139e6ei1d3i3"
+  },
+  {
+    "id": "56378d1e-0357-4bc3-93d7-4bba3730dcdb",
+    "timestamp": "2025-11-30T12:29:55",
+    "actor": "admin",
+    "action": "DISCIPLINA_CRIADA",
+    "aluno_id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "details": {
+      "disciplina_id": "dee864af-509a-4cfc-8d1c-f9fc65f193a6",
+      "nome": "Segurança da Informação"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_FULDGD - doxqr=dii4h515-0hfe-45d3-995g-139e6ei1d3i3"
+  },
+  {
+    "id": "582a6443-3fb2-4811-a537-c97bdd48b77a",
+    "timestamp": "2025-11-30T12:29:55",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "details": {
+      "disciplina_id": "dee864af-509a-4cfc-8d1c-f9fc65f193a6",
+      "estagio": "E1",
+      "nota": 8.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=dii4h515-0hfe-45d3-995g-139e6ei1d3i3"
+  },
+  {
+    "id": "87469c92-3a43-4343-8b42-9830e3bca1df",
+    "timestamp": "2025-11-30T12:29:55",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "details": {
+      "disciplina_id": "dee864af-509a-4cfc-8d1c-f9fc65f193a6",
+      "estagio": "E2",
+      "nota": 7.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=dii4h515-0hfe-45d3-995g-139e6ei1d3i3"
+  },
+  {
+    "id": "ec3fc1a0-a7c7-422f-abf0-0a11e0743aa1",
+    "timestamp": "2025-11-30T12:29:55",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "aff4e515-0ecb-45a3-995d-139b6bf1a3f3",
+    "details": {
+      "disciplina_id": "dee864af-509a-4cfc-8d1c-f9fc65f193a6",
+      "estagio": "E3",
+      "nota": 9.0,
+      "media": 8.1,
+      "status": "APROVADO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=dii4h515-0hfe-45d3-995g-139e6ei1d3i3"
+  },
+  {
+    "id": "7f05d1c2-0e3d-4de8-8c77-8dced90368dc",
+    "timestamp": "2025-11-30T12:33:18",
+    "actor": "admin",
+    "action": "ALUNO_CRIADO",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "nome": "Afonso",
+      "tipo_id": "MATRICULA",
+      "identificador": "2025A0005",
+      "ativo": true
+    },
+    "mensagem_cifrada": "DOXQR_FULDGR - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
+  },
+  {
+    "id": "09180d6e-012b-43c2-8821-690a1f5ab7f4",
+    "timestamp": "2025-11-30T12:34:49",
+    "actor": "admin",
+    "action": "DISCIPLINA_CRIADA",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "disciplina_id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+      "nome": "REDES"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_FULDGD - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
+  },
+  {
+    "id": "92b930f6-abb6-425f-8bc5-3356c7049bee",
+    "timestamp": "2025-11-30T12:36:10",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "disciplina_id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+      "estagio": "E1",
+      "nota": 8.0,
+      "media": null,
+      "status": "EM_CURSO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
+  },
+  {
+    "id": "116ba83f-14b8-4274-b911-36d697acb386",
+    "timestamp": "2025-11-30T12:36:58",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "disciplina_id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+      "estagio": "E2",
       "nota": 6.0,
       "media": null,
       "status": "EM_CURSO"
-    }
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
+  },
+  {
+    "id": "1d79c9fa-f188-481b-a4c6-6fee9ac78ca3",
+    "timestamp": "2025-11-30T12:37:21",
+    "actor": "admin",
+    "action": "NOTA_ATUALIZADA",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "disciplina_id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+      "estagio": "E3",
+      "nota": 9.0,
+      "media": 7.8,
+      "status": "APROVADO"
+    },
+    "mensagem_cifrada": "QRWD_DWXDOLCDGD - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
+  },
+  {
+    "id": "d0379645-3576-456c-a64a-968428f50f00",
+    "timestamp": "2025-11-30T12:47:31",
+    "actor": "admin",
+    "action": "DISCIPLINA_ATUALIZADA",
+    "aluno_id": "b460b70e-c399-4cdb-bf3c-32f6bca24ab4",
+    "details": {
+      "disciplina_id": "bdd21114-a49d-486f-8c8e-ac53d3f7cf84",
+      "nome": "Redes de Computadores",
+      "data_cadastro": "2025-11-30"
+    },
+    "mensagem_cifrada": "GLVFLSOLQD_DWXDOLCDGD - doxqr=e460e70h-f399-4fge-ei3f-32i6efd24de4"
   }
 ]

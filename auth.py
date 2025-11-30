@@ -26,15 +26,19 @@ def _load_json(path: str):
 
 
 def _save_json(path: str, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
 # -----------------------------
-# Criptografia de senha
+# Criptografia de senha (HASH)
 # -----------------------------
 def _hash_password(password: str, salt: str) -> str:
-    """Gera hash PBKDF2-HMAC-SHA256 em hex."""
+    """
+    Gera hash PBKDF2-HMAC-SHA256 em hex.
+    Classe: algoritmos de HASH/MAC.
+    """
     dk = hashlib.pbkdf2_hmac(
         "sha256",
         password.encode("utf-8"),
@@ -87,7 +91,7 @@ def ensure_admin():
         print("✅ Admin padrão criado: usuário=admin senha=1234 (armazenada com hash)")
         return
 
-    # migra formato antigo (se tiver)
+    # migra formato antigo, se existir
     data = _migrate_plain_password(data)
     _save_json(ADMIN_FILE, data)
 
@@ -111,7 +115,7 @@ def verify_user(username: str, password: str) -> bool:
     return _verify_password(password, salt, password_hash)
 
 
-def change_password(old_password: str, new_password: str):
+def change_password(old_pwd: str, new_pwd: str):
     data = _load_json(ADMIN_FILE)
     if not data:
         raise ValueError("Admin não configurado.")
@@ -120,25 +124,24 @@ def change_password(old_password: str, new_password: str):
 
     salt = data.get("salt")
     password_hash = data.get("password_hash")
-    if not salt or not password_hash or not _verify_password(old_password, salt, password_hash):
+    if not salt or not password_hash or not _verify_password(old_pwd, salt, password_hash):
         raise ValueError("Senha antiga incorreta.")
 
     new_salt = secrets.token_hex(16)
     data["salt"] = new_salt
-    data["password_hash"] = _hash_password(new_password, new_salt)
+    data["password_hash"] = _hash_password(new_pwd, new_salt)
     _save_json(ADMIN_FILE, data)
 
 
 # -----------------------------
-# Tokens (login)
+# Tokens
 # -----------------------------
 TOKEN_EXPIRATION = 8 * 60 * 60  # 8 horas
 
 
 def issue_token() -> str:
-    """Gera e salva um token com data de expiração."""
-    tokens = _load_json(TOKENS_FILE)
     token = secrets.token_hex(16)
+    tokens = _load_json(TOKENS_FILE)
     tokens[token] = int(time.time()) + TOKEN_EXPIRATION
     _save_json(TOKENS_FILE, tokens)
     return token
@@ -150,7 +153,6 @@ def validate_token(token: str) -> bool:
     if not expiry:
         return False
     if expiry < int(time.time()):
-        # expirou -> remove
         del tokens[token]
         _save_json(TOKENS_FILE, tokens)
         return False
