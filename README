@@ -76,6 +76,15 @@ Windows:
 python -m venv .venv
 .\.venv\Scripts\activate
 
+Caso dê erro: 
+Remova o arquivo .venv e recrie, para fazer é necessário
+Remove-Item -Recurse -Force .venv
+Set-ExecutionPolicy RemoteSigned -Scope Process
+e ai sim pode ser criado novamente
+
+python -m venv .venv
+.\.venv\Scripts\activate
+
 Linux/Mac:
 python -m venv .venv
 source .venv/bin/activate
@@ -376,5 +385,3 @@ Relatórios CSV
 Testes completos
 
 Persistência em JSON
-
-Fluxo intuitivo e fácil de demonstrar
