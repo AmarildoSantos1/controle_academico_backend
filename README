@@ -19,15 +19,47 @@ Registrar logs de auditoria com criptografia
 
 Exportar relatórios CSV (aluno e turma)
 
-Realizar autenticação com token JWT-like
+Autenticação via Token
 
-Armazenar tudo em JSON
+Persistência em JSON
 
-Executar testes unitários e integrados
+Testes unitários e integrados
 
 Interface completa via terminal (CLI)
 
-Este README contém um guia definitivo para rodar, testar e entender todo o sistema.
+⚠️ Problemas com o ambiente .venv? (Windows)
+
+Se ocorrerem erros como:
+
+“pytest não encontrado”
+
+“Import not found”
+
+“requests não encontrado”
+
+“scripts estão desabilitados”
+
+Recrie o ambiente virtual:
+
+1️⃣ Remover .venv:
+
+Remove-Item -Recurse -Force .venv
+
+
+2️⃣ Liberar execução de scripts:
+
+Set-ExecutionPolicy RemoteSigned -Scope Process
+
+
+3️⃣ Criar novamente:
+
+python -m venv .venv
+.\.venv\Scripts\activate
+
+
+4️⃣ Instalar dependências:
+
+pip install -r requirements.txt
 
 🛠️ Tecnologias Utilizadas
 
@@ -41,11 +73,11 @@ Pydantic
 
 Requests
 
-Cryptography (Fernet/AES)
+Cryptography (Fernet / AES)
 
 Pytest
 
-JSON (persistência)
+JSON para persistência
 
 📂 Estrutura do Projeto
 backend/
@@ -72,20 +104,11 @@ backend/
 
 🚀 Instalação e Execução
 1️⃣ Criar ambiente virtual
-Windows:
+Windows
 python -m venv .venv
 .\.venv\Scripts\activate
 
-Caso dê erro: 
-Remova o arquivo .venv e recrie, para fazer é necessário
-Remove-Item -Recurse -Force .venv
-Set-ExecutionPolicy RemoteSigned -Scope Process
-e ai sim pode ser criado novamente
-
-python -m venv .venv
-.\.venv\Scripts\activate
-
-Linux/Mac:
+Linux/Mac
 python -m venv .venv
 source .venv/bin/activate
 
@@ -100,29 +123,29 @@ Acesse:
 
 API Root → http://127.0.0.1:8000
 
-Documentação (Swagger) → http://127.0.0.1:8000/docs
+Swagger → http://127.0.0.1:8000/docs
 
 🔐 Autenticação
 
-Todas as rotas (exceto /auth/login) exigem o header:
+Todas as rotas (exceto /auth/login) exigem:
 
 Authorization: Bearer SEU_TOKEN
 
-🔑 Login
+Login:
 POST /auth/login
 {
   "username": "admin",
   "password": "1234"
 }
 
-🖥️ CLI — Interface Completa via Terminal
+🖥️ CLI — Interface via Terminal
 
-Para rodar:
+Execute:
 
 python cli.py
 
 
-Ele exibirá:
+Menu:
 
 1) Login
 2) Listar alunos
@@ -135,226 +158,152 @@ Ele exibirá:
 9) Ver logs de auditoria
 0) Sair
 
-🧭 Passo a passo COMPLETO de uso (COM EXEMPLOS REAIS)
-
-Abaixo está um exemplo real do fluxo, exatamente como acontece no programa.
-
+🧭 Passo a passo COMPLETO (COM EXEMPLOS REAIS)
 ⭐ 1) Login
-Opção: 1
 Usuário [admin]:
 Senha [1234]:
 ✅ Login realizado com sucesso.
 
-⭐ 2) Criar aluno (COM O EXEMPLO QUE VOCÊ PEDIU)
-
-Este é o exemplo REAL citado antes — agora incluso no README:
-
-Opção: 3
-
+⭐ 2) Criar aluno — EXEMPLO REAL
 === NOVO ALUNO ===
 Nome: Afonso
-Tipo do identificador (MATRICULA/CPF) [MATRICULA]: MATRICULA
-Identificador (matrícula ou CPF): 2025A0005
-Data de cadastro (YYYY-MM-DD) [hoje]: 2025-11-30
-Ativo? (S/N) [S]: S
+Tipo do identificador (MATRICULA/CPF): MATRICULA
+Identificador: 2025A0005
+Data de cadastro: 2025-11-30
+Ativo? S
+
+
+Resultado:
 
 ✅ Aluno criado com sucesso!
-ID: d627… | Nome: Afonso
-
-
-➡️ Exemplo válido de identificador:
-
-2025A0005 (matrícula)
-
-ou 12345678900 (CPF)
+ID: d627... | Nome: Afonso
 
 ⭐ 3) Listar alunos
-Opção: 2
-
-=== ALUNOS ===
 ID: d627... | Nome: Afonso | Ativo: True
 Tipo/ID: MATRICULA 2025A0005
 Disciplinas: 0
-----------------------------------------
 
 ⭐ 4) Adicionar disciplina
-Opção: 4
-
 ID do aluno: d627...
 Nome da disciplina: Segurança da Informação
 Data: 2025-11-30
 
-✅ Disciplina criada!
-
-⭐ 5) Lançar nota
-Opção: 5
-
-ID do aluno: d627...
-ID da disciplina: 8b3f...
-Estágio (E1/E2/E3): E1
-Nota (0 a 10): 8
-
-✓ Nota lançada
-Média: None | Status: EM_CURSO
+⭐ 5) Lançar notas
+Estágio: E1
+Nota: 8
 
 
 Após E1, E2 e E3:
 
-Média: 8.2 | Status: APROVADO
+Média: 8.2
+Status: APROVADO
 
-⭐ 6) Listar disciplinas do aluno (NOVA VERSÃO MELHORADA)
-Opção: 6
+⭐ 6) Listar disciplinas (VERSÃO MELHORADA)
+Aluno: Afonso
 
-=== DISCIPLINAS DO ALUNO ===
-ID do aluno: d627...
-
-Aluno: Afonso (MATRICULA 2025A0005)
-
-=== DISCIPLINAS ===
 1) Segurança da Informação
     Status: APROVADO
     Média: 8.2
     ID: 8b3f...
-----------------------------------------
 
-Digite o número para ver detalhes:
-> 1
 
-=== DETALHES DA DISCIPLINA ===
-Nome: Segurança da Informação
-Cadastro: 2025-11-30
+Selecionando:
+
 Notas: {'E1': 8, 'E2': 7, 'E3': 9}
 Média: 8.2
 Status: APROVADO
-----------------------------------------
 
-📊 Relatórios CSV
-Boletim por aluno
+📄 Relatórios CSV
+Boletim do aluno:
 GET /students/{id}/report.csv
 
-Relatório geral da turma
+Relatório geral:
 GET /reports/class.csv
 
 
-Produz arquivos com notas, médias e status.
+Incluem:
+
+disciplinas
+
+notas
+
+média
+
+status
 
 📜 Logs de Auditoria
 
-Logs são:
+Cifrados com Cifra de César
 
-cifrados com cifra de César no arquivo
+Decifrados ao exibir no CLI e API
 
-decifrados ao serem exibidos via API e CLI
+Exemplo:
 
-Via CLI:
+[2025-11-30] ALUNO_CRIADO
+Mensagem: Aluno criado - aluno=d627...
 
-Opção: 9
-[2025-11-30T14:45] ALUNO_CRIADO
-  Aluno ID: d627...
-  Mensagem: Aluno criado - aluno=d627...
-----------------------------------------
+🔐 Criptografia — Implementação Completa
 
-🔐 Criptografia — Explicação Completa (COM EXEMPLOS DO PROJETO)
+O sistema utiliza três métodos criptográficos, cada um de uma categoria diferente:
 
-O sistema utiliza três métodos criptográficos exigidos:
+1️⃣ PBKDF2-HMAC-SHA256 — Hash seguro da senha do admin
 
-1️⃣ PBKDF2-HMAC-SHA256 — Hash seguro de senhas
+Arquivo: auth.py
 
-📌 Arquivo: auth.py
-📌 Usado em: armazenamento da senha do administrador
+Trecho real:
 
-Trecho real do projeto:
 dk = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100_000)
 
-Onde é aplicado:
 
-ensure_admin() → cria o hash inicial
+Usado em:
 
-verify_user() → validação de login
+ensure_admin()
 
-change_password() → atualização de senha
+_hash_password()
 
-📌 Senhas nunca são armazenadas em texto puro.
+_verify_password()
 
-2️⃣ Fernet (AES + HMAC) — Criptografia simétrica
+2️⃣ Fernet (AES + HMAC) — Criptografia moderna
 
-📌 Arquivos: util.py, storage.py
-📌 Usado para: cifrar o identificador do aluno
+Arquivos: util.py, storage.py
+Protege: Identificador do aluno (CPF / Matrícula)
 
-Exemplo real gravado no alunos.json:
-"identificador_enc": "gAAAAABp..."
+Trecho real:
 
-Onde é aplicado:
 encrypt_sensitive(a.identificador)
 
-Onde é decifrado:
-ident = decrypt_sensitive(enc)
 
+Exemplo no JSON:
 
-📌 Protege matrícula/CPF diretamente no arquivo.
+"identificador_enc": "gAAAAA..."
 
 3️⃣ Cifra de César — Criptografia clássica
 
-📌 Arquivos: util.py, storage.py
-📌 Usado para: cifrar mensagens de logs
+Arquivos: util.py, storage.py
+Protege: mensagens de log
 
-Trecho real:
-mensagem_cifrada = caesar_encrypt(mensagem_clara, shift=3)
+Trecho:
 
-
-No JSON aparece cifrado:
-
-"mensagem_cifrada": "Dorqr fuldugr..."
-
-
-Mas ao consultar via API/CLI:
-
-mensagem: "Aluno criado - aluno=d627"
-
-
-📌 Atende ao requisito de criptografia clássica.
+mensagem_cifrada = caesar_encrypt(..., shift=3)
 
 🧪 Testes Automatizados
 
-O sistema possui:
+Execute:
 
-✔ Testes Unitários
-
-Média e status
-
-Funções de utilidade
-
-Hash (PBKDF2)
-
-Criptografia (Fernet e César)
-
-✔ Testes Integrados
-
-Login
-
-Criação de aluno e disciplina
-
-Lançamento de notas
-
-CSV
-
-Logs
-
-Status e média
-
-Rodar testes:
 python run_tests.py
 
 
-Esse comando:
+Ele:
 
-Executa o pytest
+executa todos os testes
 
-Gera um relatório amigável
+valida criptografia
 
-NÃO apaga seus alunos reais
+testa fluxo completo
 
-Remove somente o aluno de teste interno
+gera relatório amigável
+
+NÃO altera a base real de alunos
 
 🧩 Regras de Negócio
 Média:
@@ -366,7 +315,7 @@ APROVADO → média ≥ 7
 
 REPROVADO → média < 7
 
-EM_CURSO → notas incompletas
+EM_CURSO → notas faltando
 
 🎯 Conclusão
 
